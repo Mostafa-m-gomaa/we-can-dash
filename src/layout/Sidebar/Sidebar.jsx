@@ -4,11 +4,16 @@ import { navigationLinks } from '../../data/data';
 import "./Sidebar.css";
 import { useContext } from 'react';
 import { SidebarContext } from '../../context/sidebarContext';
+import myfoto from "../../assets/images/277576572_4930051973790212_6312887034244956070_n.jpg"
+import { BsFillArrowRightSquareFill } from 'react-icons/bs';
+import { Link ,BrowserRouter } from 'react-router-dom';
+import { AppContext } from '../../App';
 
 const Sidebar = () => {
-  const [activeLinkIdx] = useState(1);
+  const [activeLinkIdx,setActiveLinkIdx] = useState(0);
   const [sidebarClass, setSidebarClass] = useState("");
   const { isSidebarOpen } = useContext(SidebarContext);
+  const {setHeadTitle ,login ,setLogin}=useContext(AppContext)
 
   useEffect(() => {
     if(isSidebarOpen){
@@ -18,30 +23,49 @@ const Sidebar = () => {
     }
   }, [isSidebarOpen]);
 
+  const clickLink =(id ,title)=>{
+setActiveLinkIdx(id)
+setHeadTitle(title)
+  }
+  const logOut =()=>{
+    sessionStorage.clear()
+    setLogin(false)
+  }
+
   return (
+   
     <div className={ `sidebar ${sidebarClass}` }>
+    
       <div className="user-info">
           <div className="info-img img-fit-cover">
-              <img src={ personsImgs.person_two } alt="profile image" />
+              <img src={ myfoto } alt="profile image" />
           </div>
-          <span className="info-name">alice-doe</span>
+          <span className="info-name">نعم نستطيع</span>
       </div>
 
       <nav className="navigation">
-          <ul className="nav-list">
+     {login ?     <ul className="nav-list">
+     {login ?       <Link to="/" onClick={logOut}  className={`nav-link ${activeLinkIdx === 0 ? 'active' : ''}`}>
+                     <BsFillArrowRightSquareFill />
+                      <span className="nav-link-text">تسجيل الخروج</span>
+                  </Link>: <Link to="/" onClick={()=>clickLink(0 , "تسجيل الدخول")}  className={`nav-link ${activeLinkIdx === 0 ? 'active' : ''}`}>
+                     <BsFillArrowRightSquareFill />
+                      <span className="nav-link-text">تسجيل الدخول</span>
+                  </Link> }
             {
               navigationLinks.map((navigationLink) => (
-                <li className="nav-item" key = { navigationLink.id }>
-                  <a href="#" className={ `nav-link ${ navigationLink.id === activeLinkIdx ? 'active' : null }` }>
-                      <img src={ navigationLink.image } className="nav-link-icon" alt = { navigationLink.title } />
+                <li className="nav-item"  key = { navigationLink.id }>
+                  <Link to={`${navigationLink.title }`} onClick={()=>clickLink(navigationLink.id , navigationLink.title)}  className={`nav-link ${navigationLink.id === activeLinkIdx ? 'active' : ''}`}>
+                     <BsFillArrowRightSquareFill />
                       <span className="nav-link-text">{ navigationLink.title }</span>
-                  </a>
+                  </Link>
                 </li>
               ))
             }
-          </ul>
+          </ul> :null}
       </nav>
     </div>
+  
   )
 }
 

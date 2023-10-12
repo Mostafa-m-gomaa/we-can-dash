@@ -1,0 +1,111 @@
+.users {
+  width: 95%;
+  margin: auto;
+  color: white;
+}
+.users .confirm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.781);
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 120;
+  width: 50%;
+}
+.users .confirm .btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 25px;
+}
+.users .confirm .btns button {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
+  color: white;
+}
+.users .confirm .btns .yes {
+  background-color: red;
+}
+.users .confirm .btns .no {
+  background-color: green;
+}
+.users .container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.users .add {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.575);
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.users .add button {
+  background-color: var(--clr-pumpkin);
+  color: white;
+}
+.users .add form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+  margin: auto;
+}
+.users .add form label {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.users .add form label input {
+  width: 60%;
+}
+.users .all-users {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.575);
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.users .all-users .in-all-users {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.users .all-users .in-all-users .user-card {
+  background-color: white;
+  width: 90%;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+.users .all-users .in-all-users .user-card .in-user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.users .all-users .in-all-users .user-card .in-user-card .delete {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+  margin: auto;
+  border-radius: 5px;
+}
+.users .all-users .in-all-users .user-card .in-user-card .again {
+  background-color: rgb(51, 196, 70);
+  color: white;
+  cursor: pointer;
+  width: 200px;
+  margin: auto;
+  border-radius: 5px;
+  padding: 5px;
+}/*# sourceMappingURL=users.css.map */
